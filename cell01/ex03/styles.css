@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+}
+
+.head {
+    font-family: sans-serif;
+    font-size: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.photo {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+img {
+    width: 100%;
+    max-width: 550px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+a {
+    width: 550px;
+    height: 500px;
+}
