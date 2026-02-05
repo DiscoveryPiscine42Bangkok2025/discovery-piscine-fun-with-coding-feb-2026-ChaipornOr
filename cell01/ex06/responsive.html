@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexible Bread Tab</title>
+    <style>
+        /* Reset margins and ensure the container takes full height */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden; /* Prevents scrollbars if things get tight */
+        }
+
+        table {
+            font-family: sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            height: 100%; /* This stretches it to cover the page */
+            table-layout: fixed; /* Keeps columns equal width even if text differs */
+        }
+
+        th {
+            /* Using 'vh' (viewport height) allows the vertical space to shrink */
+            padding: 5vh 0; 
+            text-align: center;
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+            /* Using 'vw' (viewport width) makes the text scale with the window */
+            font-size: 8vw; 
+        }
+
+        .one {
+            border-left: 1px solid black;
+            background-color: #C68968;
+        }
+
+        .two {
+            background-color: burlywood;
+            border-right: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th class="one">Baguette</th>
+            <th class="two">Croissant</th>
+        </tr>
+    </table>
+</body>
+</html>
