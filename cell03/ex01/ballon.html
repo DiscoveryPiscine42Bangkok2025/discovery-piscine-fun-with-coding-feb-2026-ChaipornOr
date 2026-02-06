@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balloon Interaction</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        #balloon {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: red; /* Initial color */
+            transition: opacity 0.2s; /* Smooth pop effect */
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="balloon" onclick="pop(this)" onmouseleave="shrink(this)"></div>
+
+    <script>
+        // Use an array to manage color cycling easily
+        const colors = ['red', 'green', 'blue'];
+        let colorIndex = 0;
+
+        function pop(x) {
+            // 1. Handle Color Cycling (Forward)
+            colorIndex = (colorIndex + 1) % colors.length;
+            x.style.backgroundColor = colors[colorIndex];
+
+            // 2. Handle Growth
+            let currentWidth = x.offsetWidth;
+            
+            if (currentWidth < 420) {
+                let newSize = currentWidth + 10;
+                x.style.width = newSize + "px";
+                x.style.height = newSize + "px";
+            } else {
+                // Explode! Reset to original size
+                explode(x);
+            }
+        }
+
+        function shrink(x) {
+            let currentWidth = x.offsetWidth;
+
+            if (currentWidth > 200) {
+                // 1. Handle Color Cycling (Reverse)
+                colorIndex = (colorIndex - 1 + colors.length) % colors.length;
+                x.style.backgroundColor = colors[colorIndex];
+
+                // 2. Handle Shrinking
+                let newSize = currentWidth - 5;
+                x.style.width = newSize + "px";
+                x.style.height = newSize + "px";
+            }
+        }
+
+        function explode(x) {
+            x.style.opacity = "0";
+            setTimeout(() => {
+                x.style.width = "200px";
+                x.style.height = "200px";
+                x.style.backgroundColor = "red";
+                colorIndex = 0;
+                x.style.opacity = "1";
+            }, 200);
+        }
+    </script>
+</body>
+</html>
